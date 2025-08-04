@@ -86,7 +86,6 @@ disk = {
         partitions = {
           "${host}-windows-boot" = {
             label = "${host}-windows-boot";
-            start = "1M";
             size = "512M";
             type = "EF00";
             content = {
