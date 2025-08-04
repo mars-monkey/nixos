@@ -2,53 +2,9 @@ let
   host = "dell7506";
   diskid = "nvme-LITEON_CL1-8D512_002007100VEX";
 in {
-  disko.devices.disk = {
-    "liteon-nvme" = {
-      device = "/dev/disk/by-id/${diskid}";
-      type = "disk";
-      content = {
-        type = "gpt";
-        partitions = {
-          "${host}-windows-boot" = {
-            label = "${host}-windows-boot";
-            start = "1M";
-            size = "512M";
-            type = "EF00";
-            content = {
-              type = "filesystem";
-              format = "vfat";
-            };
-          };
-          "${host}-windows" = {
-            label = "${host}-windows";
-            size = "128G";
-            content = {
-              type = "ntfs";
-            };
-          };
-          "${host}-zroot" = {
-            label = "${host}-zroot";
-            end = "-512M"; # Negative end means "Leave this much empty space at the end of the device"
-            content = {
-              type = "zfs";
-              pool = "${host}-zroot";
-            };
-          };
-          "${host}-boot" = {
-            label = "${host}-boot";
-            size = "100%";
-            type = "EF00";
-            content = {
-              type = "filesystem";
-              format = "vfat";
-              mountpoint = "/boot";
-            };
-          };
-        };
-      };
-    };
+  disko.devices = {
 
-    zpool."${host}-zroot" = {
+zpool."${host}-zroot" = {
       type = "zpool";
       options.ashift = "12";
 
@@ -119,6 +75,54 @@ in {
       };
 
       postCreateHook = "zfs snapshot -r ${host}-zroot@blank";
+    };
+
+disk = {
+    "liteon-nvme" = {
+      device = "/dev/disk/by-id/${diskid}";
+      type = "disk";
+      content = {
+        type = "gpt";
+        partitions = {
+          "${host}-windows-boot" = {
+            label = "${host}-windows-boot";
+            start = "1M";
+            size = "512M";
+            type = "EF00";
+            content = {
+              type = "filesystem";
+              format = "vfat";
+            };
+          };
+          "${host}-windows" = {
+            label = "${host}-windows";
+            size = "128G";
+            content = {
+              type = "ntfs";
+            };
+          };
+          "${host}-zroot" = {
+            label = "${host}-zroot";
+            end = "-512M"; # Negative end means "Leave this much empty space at the end of the device"
+            content = {
+              type = "zfs";
+              pool = "${host}-zroot";
+            };
+          };
+          "${host}-boot" = {
+            label = "${host}-boot";
+            size = "100%";
+            type = "EF00";
+            content = {
+              type = "filesystem";
+              format = "vfat";
+              mountpoint = "/boot";
+            };
+          };
+        };
+      };
+    };
+
     };
   };
 }
