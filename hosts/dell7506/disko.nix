@@ -97,7 +97,8 @@ disk = {
             label = "${host}-windows";
             size = "128G";
             content = {
-              type = "ntfs";
+              type = "filesystem";
+              filesystems = "ntfs";
             };
           };
           "${host}-zroot" = {
