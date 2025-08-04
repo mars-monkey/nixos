@@ -98,7 +98,7 @@ disk = {
             size = "128G";
             content = {
               type = "filesystem";
-              filesystems = "ntfs";
+              format = "ntfs";
             };
           };
           "${host}-zroot" = {
