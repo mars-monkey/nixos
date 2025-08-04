@@ -79,7 +79,7 @@ zpool."${host}-zroot" = {
 
 disk = {
     "liteon-nvme" = {
-      device = "/dev/disk/by-id/${diskid}";
+      device = "/dev/vda";
       type = "disk";
       content = {
         type = "gpt";
