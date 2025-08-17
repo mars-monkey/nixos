@@ -11,7 +11,7 @@
  
     kernelModules = [ "kvm-intel" ];
 
-    zfs.devNodes = "/dev/disk/by-partuuid";
+    zfs.devNodes = "/dev/disk/by-partlabel";
   };
 
   networking.hostId = "1afade11";
