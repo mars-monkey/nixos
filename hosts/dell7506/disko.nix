@@ -1,6 +1,6 @@
 let
   host = "dell7506";
-  diskid = "nvme-LITEON_CL1-8D512_002007100VEX";
+  diskid = "nvme-Samsung-SSD_980_PRO_2TB_S6B0NG0R413739A"
 in {
   disko.devices = {
 
@@ -79,7 +79,7 @@ zpool."${host}-zroot" = {
 
 disk = {
     "liteon-nvme" = {
-      device = "/dev/vda";
+      device = "/dev/disk/by-id/${diskid}";
       type = "disk";
       content = {
         type = "gpt";
