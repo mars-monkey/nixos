@@ -35,7 +35,7 @@
       };
   
       "/boot" = {
-        device = "/dev/disk/by-partlabel/dell7506-zboot";
+        device = "/dev/disk/by-partlabel/dell7506-boot";
         fsType = "vfat";
         neededForBoot = false;
       };
