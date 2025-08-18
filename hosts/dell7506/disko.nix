@@ -1,6 +1,6 @@
 let
   host = "dell7506";
-  diskid = "nvme-Samsung-SSD_980_PRO_2TB_S6B0NG0R413739A";
+  diskid = "nvme-Samsung_SSD_980_PRO_2TB_S6B0NG0R413739A";
 in {
   disko.devices = {
 
