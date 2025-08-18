@@ -14,4 +14,9 @@
       hashedPassword = "$y$j9T$PPMehWHX4aaQ5oMN3igBV0$zXYtqyL4ez7knABEGRMIYTPk1YERI/aY/qOaxXXq1q5";
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    git
+    neovim
+];
 }
